@@ -4,67 +4,67 @@ import PriorityColumn from "./components/PriorityColumn/PriorityColumn";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("https://apimocha.com/quicksell/data");
-        const jsonData = await response.json();
-
-        if (
-          typeof jsonData === "object" &&
-          jsonData !== null &&
-          jsonData &&
-          jsonData.tickets
-        ) {
-          setData(jsonData);
-        } else {
-          console.error("Fetched data is not a valid object:", jsonData);
-        }
-
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    }
-
     fetchData();
   }, []);
 
- 
-  const ticketsByPriority = {
-    0: [],
-    1: [],
-    2: [],
-    3: [],
-    4: [],
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://apimocha.com/quicksell/data");
+      const jsonData = await response.json();
+
+      setTasks(jsonData.tickets || []);
+      setUsers(jsonData.users || []);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setIsLoading(false);
+    }
   };
 
-  // Group tickets by priority using for...of loop
-  if (data.tickets && data.tickets.length > 0) {
-    for (const ticket of data.tickets) {
-      ticketsByPriority[ticket.priority].push(ticket);
-    }
+  function filterTasksByPriority(priority) {
+    return tasks.filter((task) => task.priority === priority);
   }
+
+  function handleGroupByChange(event) {
+    setGroupBy(event.target.value);
+  }
+
+  function groupTasksByGrouping() {
+    const groupedTasks = {};
+
+    tasks.forEach(task => {
+      if (!groupedTasks[task[groupBy]]) {
+        groupedTasks[task[groupBy]] = [];
+      }
+      groupedTasks[task[groupBy]].push(task);
+    });
+
+    return groupedTasks;
+  }
+  
 
   return (
     <>
       <Navbar />
 
+      <div className="kanban-board">
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="loading">Loading...</div>
       ) : (
-        <div className="kanban-board">
-          <PriorityColumn priorityLabel="No Priority" items={ticketsByPriority[0]} />
-          <PriorityColumn priorityLabel="Urgent" items={ticketsByPriority[1]} />
-          <PriorityColumn priorityLabel="High" items={ticketsByPriority[2]} />
-          <PriorityColumn priorityLabel="Medium" items={ticketsByPriority[3]} />
-          <PriorityColumn priorityLabel="Low" items={ticketsByPriority[4]} />
-        </div>
+        <>
+          <PriorityColumn title="Urgent" tasks={filterTasksByPriority(4)} users={users} />
+          <PriorityColumn title="High" tasks={filterTasksByPriority(3)} users={users} />
+          <PriorityColumn title="Medium" tasks={filterTasksByPriority(2)} users={users} />
+          <PriorityColumn title="Low" tasks={filterTasksByPriority(1)} users={users} />
+          <PriorityColumn title="No Priority" tasks={filterTasksByPriority(0)} users={users} />
+        </>
       )}
+      </div>
     </>
   );
 }

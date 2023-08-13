@@ -1,28 +1,26 @@
-import React from 'react';
-import './PriorityColumn.css';
-import { FaExclamation, FaBolt, FaSignal } from 'react-icons/fa';
+import React from "react";
+import "./PriorityColumn.css"; // Import the PriorityColumn.css stylesheet
 
-const PriorityColumn = ({ priorityLabel, items, priority }) => {
-  // Define icons for each priority
-  const priorityIcons = {
-    0: '...',
-    1: <FaExclamation />,
-    2: <FaBolt />,
-    3: <FaSignal />,
-    4: <FaSignal />,
-  };
+function PriorityColumn({ title, tasks, users }) {
+  function getUserById(userId) {
+    const user = users.find((user) => user.id === userId);
+    return user ? user.name : "Unknown User";
+  }
 
   return (
-    <div className={`kanban-column priority-${priority}`}>
-      <div className="priority-icon">{priorityIcons[priority]}</div>
-      <h2>{priorityLabel}</h2>
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
-      </ul>
+    <div className="column">
+      <h2>{title}</h2>
+      {tasks.map((task) => (
+        <div key={task.id} className="task-card">
+          <div className="task-title">{task.title}</div>
+          <div className="task-priority">Priority: {task.priority}</div>
+          <div className="task-user">
+            Assigned to: {getUserById(task.userId)}
+          </div>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default PriorityColumn;
