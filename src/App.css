@@ -1,0 +1,6 @@
+.kanban-board {
+    display: flex; /* Create a flex container for columns */
+    flex-wrap: wrap; /* Allow columns to wrap when there's not enough space */
+    justify-content: space-between; /* Distribute space between columns */
+    margin-top: 10%;
+  }
