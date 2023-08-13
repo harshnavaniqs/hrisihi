@@ -8,6 +8,10 @@ function App() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [groupBy, setGroupBy] = useState("priority");
+
+  const [sortOption, setSortOption] = useState("priority");
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -26,44 +30,81 @@ function App() {
     }
   };
 
-  function filterTasksByPriority(priority) {
-    return tasks.filter((task) => task.priority === priority);
+  function filterTasksByCriteria(task) {
+    switch (groupBy) {
+      case "status":
+        return task.status;
+      case "userId":
+        return task.userId;
+      case "priority":
+        return task.priority;
+      default:
+        return null;
+    }
+  }
+
+  function groupTasksByGrouping() {
+    const groupedTasks = {};
+
+    tasks.forEach((task) => {
+      const groupCriteria = filterTasksByCriteria(task);
+      if (groupCriteria !== null) {
+        if (!groupedTasks[groupCriteria]) {
+          groupedTasks[groupCriteria] = [];
+        }
+        groupedTasks[groupCriteria].push(task);
+      }
+    });
+
+    return groupedTasks;
+  }
+
+  function sortTasksByCriteria(tasks, sortOption) {
+    return tasks.slice().sort((a, b) => {
+      if (sortOption === "priority") {
+        return b.priority - a.priority;
+      } else if (sortOption === "title") {
+        return a.title.localeCompare(b.title);
+      }
+      return 0;
+    });
   }
 
   function handleGroupByChange(event) {
     setGroupBy(event.target.value);
   }
 
-  function groupTasksByGrouping() {
-    const groupedTasks = {};
-
-    tasks.forEach(task => {
-      if (!groupedTasks[task[groupBy]]) {
-        groupedTasks[task[groupBy]] = [];
-      }
-      groupedTasks[task[groupBy]].push(task);
-    });
-
-    return groupedTasks;
+  function handleSortOptionChange(event) {
+    setSortOption(event.target.value);
   }
-  
 
   return (
     <>
-      <Navbar />
-
       <div className="kanban-board">
-      {isLoading ? (
-        <div className="loading">Loading...</div>
-      ) : (
-        <>
-          <PriorityColumn title="Urgent" tasks={filterTasksByPriority(4)} users={users} />
-          <PriorityColumn title="High" tasks={filterTasksByPriority(3)} users={users} />
-          <PriorityColumn title="Medium" tasks={filterTasksByPriority(2)} users={users} />
-          <PriorityColumn title="Low" tasks={filterTasksByPriority(1)} users={users} />
-          <PriorityColumn title="No Priority" tasks={filterTasksByPriority(0)} users={users} />
-        </>
-      )}
+        {!isLoading && (
+          <Navbar
+            groupBy={groupBy}
+            sortOption={sortOption}
+            onGroupByChange={handleGroupByChange}
+            onSortOptionChange={handleSortOptionChange}
+          />
+        )}
+        {isLoading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          <>
+            {Object.entries(groupTasksByGrouping()).map(
+              ([groupTitle, groupTasks]) => (
+                <PriorityColumn
+                  key={groupTitle}
+                  title={groupTitle}
+                  tasks={sortTasksByCriteria(groupTasks, sortOption)}
+                  users={users}
+                />
+              )
+            )}
+          </>
+        )}
       </div>
     </>
   );

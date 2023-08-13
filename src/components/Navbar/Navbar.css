@@ -1,11 +1,42 @@
 .navbar {
-  position: fixed;
-  top: 4%;
-  left: 5%;
-  border-bottom: 1px solid #ccc;
-  height: 50px;
+  background-color: #333;
+  color: white;
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Place the navbar at the top of the page */
+  width: 100%; /* Make the navbar full width */
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.grouping-options {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: black;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #333 !important; /* Set text color for the dropdown options */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  outline: none;
+  border-color: #333;
 }
