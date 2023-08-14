@@ -41,6 +41,13 @@
   padding: 5px 10px; /* Adjust padding */
   border-radius: 5px;
   position: relative; /* Add position */
+
+}
+
+.display-button:hover {
+  background-color: #ff9900; /* Change background color on hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .display-button-icon {

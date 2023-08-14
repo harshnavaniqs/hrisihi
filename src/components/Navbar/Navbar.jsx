@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { MdOutlineDisplaySettings } from "react-icons/md";
 
@@ -8,6 +8,23 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
   const toggleDisplayBox = () => {
     setShowDisplayBox(!showDisplayBox); // Toggle the value
   };
+
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      // Check if the click target is not within the display box
+      if (!e.target.closest(".display-button-container")) {
+        setShowDisplayBox(false);
+      }
+    };
+
+    // Add event listener to listen for clicks on the entire document
+    document.addEventListener("click", handleDocumentClick);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -39,6 +56,7 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
           </button>
 
           <div className={`button-box ${showDisplayBox ? "show" : ""}`}>
+          {showDisplayBox && ( 
             <div className="grouping-options">
               <div className="select-container">
                 <label htmlFor="groupSelect">Grouping :</label>
@@ -53,7 +71,8 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
                 </select>
               </div>
             </div>
-
+          )}
+          {showDisplayBox && (
             <div className="sorting-options">
               <div className="select-container">
                 <label htmlFor="sortSelect">Sorting :</label>
@@ -67,7 +86,10 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
                 </select>
               </div>
             </div>
+            )}
+          
           </div>
+          
         </div>
       </div>
     </nav>

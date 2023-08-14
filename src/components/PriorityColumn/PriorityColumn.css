@@ -63,8 +63,21 @@
   font-size: 18px;
   color: #666;
   margin-right: 5px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
+.priority-icon:hover {
+  animation: bounce 0.5s infinite; /* Apply bounce animation on hover */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
 @media screen and (max-width: 768px) {
 
