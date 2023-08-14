@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
   const [showDisplayBox, setShowDisplayBox] = useState(false); // Initialize with false
-
+  
   const toggleDisplayBox = () => {
     setShowDisplayBox(!showDisplayBox); // Toggle the value
   };

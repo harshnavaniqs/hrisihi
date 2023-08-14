@@ -1,11 +1,43 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-y: scroll;
+  overflow-x: hidden ;
+}
+
+
 .kanban-board {
+  overflow: auto;
+  overflow-y: auto;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 5%;
+  overflow-x: auto;
   padding: 20px;
   gap: 20px;
-  background-color: #ffffff; /* Add a background color to the board */
+  margin-top: 5%;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin; /* "auto" or "none" can also be used */
+  scrollbar-color: #ccc #f5f5f5; /* thumb color and track color */
+}
+
+/* Styling the scrollbar thumb */
+.kanban-board::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 6px;
+}
+
+/* Styling the scrollbar track */
+.kanban-board::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
 }
 
 

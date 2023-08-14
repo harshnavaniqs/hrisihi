@@ -12,8 +12,30 @@ function App() {
 
   const [sortOption, setSortOption] = useState("priority");
 
+  const [loadingSavedState, setLoadingSavedState] = useState(true); 
+
   useEffect(() => {
     fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("groupBy", groupBy);
+  // }, [groupBy]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("sortOption", sortOption);
+  // }, [sortOption]);
+
+
+  useEffect(() => {
+    const savedGroupBy = localStorage.getItem("groupBy") || "priority";
+    const savedSortOption = localStorage.getItem("sortOption") || "priority";
+  
+    setGroupBy(savedGroupBy);
+    setSortOption(savedSortOption);
+    console.log("savedGroupBy", savedGroupBy);
+    console.log("savedSortOption", savedSortOption);
+    setLoadingSavedState(false);
   }, []);
 
   const fetchData = async () => {
@@ -70,18 +92,25 @@ function App() {
     });
   }
 
+  
+
   function handleGroupByChange(event) {
     setGroupBy(event.target.value);
+    const newGroupBy = event.target.value;
+    localStorage.setItem("groupBy", newGroupBy);
   }
 
   function handleSortOptionChange(event) {
+    const newSortOption = event.target.value;
+    
+    localStorage.setItem("sortOption", newSortOption);
     setSortOption(event.target.value);
   }
 
   return (
     <>
       <div className="kanban-board">
-        {!isLoading && (
+        {!isLoading && !loadingSavedState && (
           <Navbar
             groupBy={groupBy}
             sortOption={sortOption}
@@ -100,6 +129,7 @@ function App() {
                   title={groupTitle}
                   tasks={sortTasksByCriteria(groupTasks, sortOption)}
                   users={users}
+                  groupBy={groupBy}
                 />
               )
             )}
