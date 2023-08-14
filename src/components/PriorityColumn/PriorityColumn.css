@@ -2,19 +2,25 @@
   padding: 20px;
   min-width: 300px;
   max-width: 400px;
-  background-color: transparent; /* Or use the background color you want */
-  border: none; /* Remove borders if any */
-  box-shadow: none; /* Remove shadows if any */
+  background-color: transparent;
+  /* Or use the background color you want */
+  border: none;
+  /* Remove borders if any */
+  box-shadow: none;
+  /* Remove shadows if any */
 }
 
 .column-title {
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 20px;
   color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cards {
-  
+
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -37,4 +43,18 @@
 
 .status-column-title {
   margin-bottom: 10px;
+}
+
+/* Dots for the column title */
+.column-title-dots {
+  font-size: 18px;
+  color: #666;
+ 
+}
+
+.total-number{
+  font-size: 14px;
+  color: #666;
+  /* margin-left: 5px; */
+  margin-right: 40px;
 }

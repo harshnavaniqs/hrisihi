@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TicketCard.css";
 
 function TicketCard({ task, users }) {
   const [isCompleted, setIsCompleted] = useState(task.completed || false);
+
+  useEffect(() => {
+    const savedCompletionState = localStorage.getItem(`completed_${task.id}`);
+
+    if (savedCompletionState) {
+      setIsCompleted(JSON.parse(savedCompletionState));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(`completed_${task.id}`, JSON.stringify(isCompleted));
+    console.log("isCompleted", isCompleted);
+    console.log("task.id", task.id);
+  }, [isCompleted]);
 
   const handleToggleComplete = () => {
     setIsCompleted(!isCompleted);
@@ -10,9 +24,12 @@ function TicketCard({ task, users }) {
 
   return (
     <div className={`ticket-card ${isCompleted ? "completed" : ""}`}>
-      <div className={`circle ${isCompleted ? 'completed' : ''}`} onClick={handleToggleComplete}>
-      {/* {isCompleted ? '✓' : ''} */}
-     
+      <div
+        className="circle"
+        onClick={handleToggleComplete}
+      >
+        {/* {isCompleted ? '✓' : ''} */}
+
         {isCompleted && <span className="tick">✔</span>}
       </div>
       <div className="ticket-details">
