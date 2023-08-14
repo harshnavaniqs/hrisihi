@@ -24,8 +24,8 @@ function App() {
 
     setGroupBy(savedGroupBy);
     setSortOption(savedSortOption);
-    console.log("savedGroupBy", savedGroupBy);
-    console.log("savedSortOption", savedSortOption);
+    // console.log("savedGroupBy", savedGroupBy);
+    // console.log("savedSortOption", savedSortOption);
     setLoadingSavedState(false);
   }, []);
 

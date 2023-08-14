@@ -45,7 +45,7 @@ function PriorityColumn({ title, tasks, users, groupBy }) {
     // Format status titles with capitalization and spacing
     title = formatTitle(title);
   } else if (groupBy === "priority") {
-    console.log("Priority Icon for", title, ":", priorityIcons[title]);
+    // console.log("Priority Icon for", title, ":", priorityIcons[title]);
     title = priorityNames[title];
   }
 
