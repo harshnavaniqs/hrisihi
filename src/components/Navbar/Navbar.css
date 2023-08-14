@@ -8,7 +8,7 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   padding-top: 20px;
-  margin: 0; 
+  margin: 0;
 }
 
 .navbar-inner {
@@ -36,7 +36,20 @@
   cursor: pointer;
   font-size: 16px;
   padding: 5px 10px;
- 
+  display: flex;
+  align-items: center;
+
+}
+
+
+.dropdown-arrow {
+  margin-left: 5px;
+  transition: transform 0.2s ease-in-out;
+  transform-origin: center;
+}
+
+.dropdown-arrow.show {
+  transform: rotate(180deg);
 }
 
 .display-button:hover {
@@ -48,19 +61,27 @@
   border-radius: 4px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  position: absolute; /* Position absolutely */
-  top: 80%; /* Position below the button */
-  right: 85%; /* Align with the right edge */
+  position: absolute;
+  /* Position absolutely */
+  top: 80%;
+  /* Position below the button */
+  right: 85%;
+  /* Align with the right edge */
   margin-top: 10px;
   transition: opacity 0.3s, transform 0.3s;
-  opacity: 0; /* Start hidden */
-  transform: translateY(-10px); /* Start slightly above */
+  opacity: 0;
+  /* Start hidden */
+  transform: translateY(-10px);
+  /* Start slightly above */
 }
 
 .button-box.show {
-  margin-top: 20px; /* Increase margin when the box is shown */
-  opacity: 1; /* Show the box */
-  transform: translateY(0); /* Move to original position */
+  margin-top: 20px;
+  /* Increase margin when the box is shown */
+  opacity: 1;
+  /* Show the box */
+  transform: translateY(0);
+  /* Move to original position */
 }
 
 .button-box {
@@ -73,7 +94,8 @@
 
 .grouping-options,
 .sorting-options {
-  margin-top: 10px; /* Add space between the buttons */
+  margin-top: 10px;
+  /* Add space between the buttons */
 }
 
 label {
@@ -93,14 +115,15 @@ label {
   background-color: white;
   color: #333;
   cursor: pointer;
- 
+
 }
 
 /* Custom animation for buttons */
 .dropdown-btn:hover {
   transform: translateY(-2px);
- 
+
 }
+
 .dropdown-content {
   position: absolute;
   top: 100%;
@@ -112,7 +135,8 @@ label {
   display: none;
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s, transform 0.3s; /* Add transitions for opacity and transform only */
+  transition: opacity 0.3s, transform 0.3s;
+  /* Add transitions for opacity and transform only */
 }
 
 /* Show the dropdown content on hovering over the .select-container */
@@ -121,6 +145,3 @@ label {
   opacity: 1;
   transform: translateY(0);
 }
-
-
-/* Rest of the CSS code for dropdown options */

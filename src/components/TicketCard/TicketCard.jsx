@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./TicketCard.css";
 
+function truncateTitle(title, maxLength) {
+  if (title.length > maxLength) {
+    return title.substring(0, maxLength) + '...';
+  }
+  return title;
+}
+
 function TicketCard({ task, users }) {
   const [isCompleted, setIsCompleted] = useState(task.completed || false);
 
@@ -32,7 +39,7 @@ function TicketCard({ task, users }) {
       <div className="ticket-details">
         <div className="card-body">
           {task.id}
-          <h3 className="title"> {task.title}</h3> {/* Display id as title */}
+          <h3 className="title"> {truncateTitle(task.title, 35)}</h3> {/* Display id as title */}
           <p className="tag">
             {" "}
             <div className="exclamation-box">!</div>

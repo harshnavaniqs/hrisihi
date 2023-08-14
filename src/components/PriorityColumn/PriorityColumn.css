@@ -1,5 +1,5 @@
 .priority-column {
-  padding: 20px;
+  padding: 10px;
   min-width: 300px;
   max-width: 400px;
   background-color: transparent;
@@ -20,11 +20,12 @@
 }
 
 .cards {
-
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  
 }
 
 .status-columns {
@@ -49,12 +50,10 @@
 .column-title-dots {
   font-size: 18px;
   color: #666;
- 
 }
 
-.total-number{
+.total-number {
   font-size: 14px;
   color: #666;
-  /* margin-left: 5px; */
   margin-right: 40px;
 }
