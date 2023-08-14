@@ -24,10 +24,7 @@ function TicketCard({ task, users }) {
 
   return (
     <div className={`ticket-card ${isCompleted ? "completed" : ""}`}>
-      <div
-        className="circle"
-        onClick={handleToggleComplete}
-      >
+      <div className="circle" onClick={handleToggleComplete}>
         {/* {isCompleted ? '✓' : ''} */}
 
         {isCompleted && <span className="tick">✔</span>}
@@ -38,6 +35,7 @@ function TicketCard({ task, users }) {
           <h3 className="title"> {task.title}</h3> {/* Display id as title */}
           <p className="tag">
             {" "}
+            <div className="exclamation-box">!</div>
             <span className="tag-text">{task.tag}</span>
           </p>
         </div>

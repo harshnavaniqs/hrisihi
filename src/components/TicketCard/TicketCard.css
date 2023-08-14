@@ -67,6 +67,8 @@
 .tag {
   margin: 0;
   color: #666;
+  display: flex;
+  align-items: center;
 }
 
 .tag-text {
@@ -74,4 +76,15 @@
   padding: 2px 5px;
   border-radius: 4px;
   color: #777; /* Change the color to a more greyish tone */
+
+}
+
+.exclamation-box {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
