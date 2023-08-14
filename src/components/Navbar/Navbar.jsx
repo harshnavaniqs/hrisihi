@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { MdOutlineDisplaySettings } from 'react-icons/md';
+import { MdOutlineDisplaySettings } from "react-icons/md";
 
 function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
   const [showDisplayBox, setShowDisplayBox] = useState(false); // Initialize with false
-  
+
   const toggleDisplayBox = () => {
     setShowDisplayBox(!showDisplayBox); // Toggle the value
   };
@@ -16,7 +16,11 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
           className={`display-button-container ${showDisplayBox ? "show" : ""}`}
         >
           <button className="display-button" onClick={toggleDisplayBox}>
-          <MdOutlineDisplaySettings size={16} className="display-button-icon" /> {/* Icon on the left */}
+            <MdOutlineDisplaySettings
+              size={16}
+              className="display-button-icon"
+            />{" "}
+            {/* down arrow on the left */}
             Display
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,45 +32,42 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={`dropdown-arrow ${showDisplayBox ? 'show' : ''}`}
+              className={`dropdown-arrow ${showDisplayBox ? "show" : ""}`}
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
-
           </button>
 
-         
           <div className={`button-box ${showDisplayBox ? "show" : ""}`}>
-              <div className="grouping-options">
-                <div className="select-container">
-                  <label htmlFor="groupSelect">Group by:</label>
-                  <select
-                    id="groupSelect"
-                    value={groupBy}
-                    onChange={onGroupByChange}
-                  >
-                    <option value="status">By Status</option>
-                    <option value="userId">By User</option>
-                    <option value="priority">By Priority</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="sorting-options">
-                <div className="select-container">
-                  <label htmlFor="sortSelect">Sort by:</label>
-                  <select
-                    id="sortSelect"
-                    value={sortOption}
-                    onChange={onSortOptionChange}
-                  >
-                    <option value="priority">Priority</option>
-                    <option value="title">Title</option>
-                  </select>
-                </div>
+            <div className="grouping-options">
+              <div className="select-container">
+                <label htmlFor="groupSelect">Group by:</label>
+                <select
+                  id="groupSelect"
+                  value={groupBy}
+                  onChange={onGroupByChange}
+                >
+                  <option value="status">By Status</option>
+                  <option value="userId">By User</option>
+                  <option value="priority">By Priority</option>
+                </select>
               </div>
             </div>
-          
+
+            <div className="sorting-options">
+              <div className="select-container">
+                <label htmlFor="sortSelect">Sort by:</label>
+                <select
+                  id="sortSelect"
+                  value={sortOption}
+                  onChange={onSortOptionChange}
+                >
+                  <option value="priority">Priority</option>
+                  <option value="title">Title</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

@@ -19,7 +19,6 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 .display-button-container {
   display: inline-block;
   background-color: white;
@@ -100,7 +99,7 @@
 
 .grouping-options,
 .sorting-options {
-  margin-top: 10px;
+  margin-top: 10px !important;
   /* Add space between the buttons */
 }
 
@@ -110,6 +109,10 @@ label {
 
 .select-container {
   position: relative;
+  /* padding-right: 10px;
+   */
+   display: flex;
+   align-items: center;
 }
 
 /* Update the animation */
@@ -121,13 +124,12 @@ label {
   background-color: white;
   color: #333;
   cursor: pointer;
-
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Custom animation for buttons */
+/* Custom animation for buttons on hover */
 .dropdown-btn:hover {
   transform: translateY(-2px);
-
 }
 
 .dropdown-content {
@@ -142,7 +144,6 @@ label {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s, transform 0.3s;
-  /* Add transitions for opacity and transform only */
 }
 
 /* Show the dropdown content on hovering over the .select-container */
@@ -150,4 +151,27 @@ label {
   display: block;
   opacity: 1;
   transform: translateY(0);
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .display-button-container {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .display-button {
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  .button-box {
+    top: 70%;
+    right: 46%;
+  }
 }

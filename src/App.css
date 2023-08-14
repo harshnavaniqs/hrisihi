@@ -13,23 +13,6 @@ body {
   overflow-x: hidden ;
 }
 
-/*~~~~~~ Scroll bar ~~~~~~*/
-/* ::-webkit-scrollbar {
-  width: 11px;
-  background: red;
-}
-
-::-webkit-scrollbar-thumb {
-  width: 100%;
-  background: rgb(0, 0, 0);
-  border-radius: 2em;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(255, 255, 255);
-} */
-
-
 .kanban-board {
   overflow: auto;
   overflow-y: auto;
@@ -109,5 +92,42 @@ body {
 
   to {
     opacity: 1;
+  }
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .kanban-board {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-top: 25%;
+  }
+
+  .loading {
+    font-size: 18px;
+  }
+
+  .loading-text {
+    font-size: 18px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+  }
+
+  .dot1 {
+    animation-delay: 0.1s;
+  }
+
+  .dot2 {
+    animation-delay: 0.2s;
+  }
+
+  .dot3 {
+    animation-delay: 0.3s;
   }
 }

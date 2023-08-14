@@ -3,7 +3,7 @@ import "./TicketCard.css";
 
 function truncateTitle(title, maxLength) {
   if (title.length > maxLength) {
-    return title.substring(0, maxLength) + '...';
+    return title.substring(0, maxLength) + "...";
   }
   return title;
 }
@@ -39,12 +39,13 @@ function TicketCard({ task, users }) {
       <div className="ticket-details">
         <div className="card-body">
           {task.id}
-          <h3 className="title"> {truncateTitle(task.title, 35)}</h3> {/* Display id as title */}
-          <p className="tag">
+          <h3 className="title"> {truncateTitle(task.title, 35)}</h3>{" "}
+          {/* Display id as title */}
+          <div className="tag">
             {" "}
             <div className="exclamation-box">!</div>
             <span className="tag-text">{task.tag}</span>
-          </p>
+          </div>
         </div>
       </div>
     </div>
