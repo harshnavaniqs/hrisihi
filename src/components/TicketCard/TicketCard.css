@@ -82,7 +82,12 @@
   border-radius: 4px;
   color: #777;
   /* Change the color to a more greyish tone */
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
 
+.tag-text:hover {
+  transform: translateY(-2px); /* Lift the text slightly */
+  color: #555; /* Change the color slightly */
 }
 
 .exclamation-box {
@@ -93,6 +98,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.exclamation-box:hover {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  background-color: #f0f0f0; /* Change the background color slightly */ /* Apply a scale transform on hover */
 }
 
 /* Media Queries */
