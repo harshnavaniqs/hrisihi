@@ -63,7 +63,7 @@ function PriorityColumn({ title, tasks, users, groupBy }) {
       </h2>
       <div className="cards">
         {tasks.map((task) => (
-          <TicketCard key={task.id} task={task} users={users} />
+          <TicketCard key={task.id} task={task} users={users} grouping={groupBy}/>
         ))}
       </div>
     </div>

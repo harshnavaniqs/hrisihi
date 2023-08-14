@@ -3,13 +3,12 @@
   min-width: 300px;
   max-width: 400px;
   background-color: transparent;
-  /* Or use the background color you want */
   border: none;
   /* Remove borders if any */
   box-shadow: none;
-  flex-direction: column;  
+  flex-direction: column;
   align-items: center;
-  /* Remove shadows if any */
+
 }
 
 .column-title {
@@ -18,7 +17,7 @@
   color: #333;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .cards {
@@ -26,7 +25,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: stretch; 
+  align-items: stretch;
 }
 
 .status-columns {
@@ -60,14 +59,15 @@
   margin-right: 40px;
 }
 
-.priority-icon{
+.priority-icon {
   font-size: 18px;
   color: #666;
+  margin-right: 5px;
 }
 
 
 @media screen and (max-width: 768px) {
-  
+
   .priority-column {
     min-width: auto;
     max-width: none;
@@ -84,6 +84,5 @@
   .priority-icon {
     font-size: 16px;
   }
-  
-}
 
+}
