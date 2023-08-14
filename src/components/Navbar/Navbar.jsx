@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { MdOutlineDisplaySettings } from 'react-icons/md';
 
 function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
   const [showDisplayBox, setShowDisplayBox] = useState(false); // Initialize with false
@@ -15,6 +16,7 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
           className={`display-button-container ${showDisplayBox ? "show" : ""}`}
         >
           <button className="display-button" onClick={toggleDisplayBox}>
+          <MdOutlineDisplaySettings size={16} className="display-button-icon" /> {/* Icon on the left */}
             Display
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +32,7 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
-            
+
           </button>
 
          

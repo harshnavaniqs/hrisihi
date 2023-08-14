@@ -38,9 +38,15 @@
   padding: 5px 10px;
   display: flex;
   align-items: center;
-
+  border: 1px solid #ccc; /* Add border */
+  padding: 5px 10px; /* Adjust padding */
+  border-radius: 5px;
+  position: relative; /* Add position */
 }
 
+.display-button-icon {
+  margin-right: 7px;
+}
 
 .dropdown-arrow {
   margin-left: 5px;
