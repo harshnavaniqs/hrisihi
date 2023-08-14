@@ -119,7 +119,14 @@ function App() {
           />
         )}
         {isLoading ? (
-          <div className="loading">Loading...</div>
+          <div className="loading">
+            <span className="loading-text">Loading</span>
+            <div className="loading-dots">
+              <div className="dot dot1"></div>
+              <div className="dot dot2"></div>
+              <div className="dot dot3"></div>
+            </div>
+          </div>
         ) : (
           <>
             {Object.entries(groupTasksByGrouping()).map(
