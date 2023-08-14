@@ -41,22 +41,22 @@ function Navbar({ groupBy, sortOption, onGroupByChange, onSortOptionChange }) {
           <div className={`button-box ${showDisplayBox ? "show" : ""}`}>
             <div className="grouping-options">
               <div className="select-container">
-                <label htmlFor="groupSelect">Group by:</label>
+                <label htmlFor="groupSelect">Grouping :</label>
                 <select
                   id="groupSelect"
                   value={groupBy}
                   onChange={onGroupByChange}
                 >
-                  <option value="status">By Status</option>
-                  <option value="userId">By User</option>
-                  <option value="priority">By Priority</option>
+                  <option value="status">Status</option>
+                  <option value="userId">User</option>
+                  <option value="priority">Priority</option>
                 </select>
               </div>
             </div>
 
             <div className="sorting-options">
               <div className="select-container">
-                <label htmlFor="sortSelect">Sort by:</label>
+                <label htmlFor="sortSelect">Sorting :</label>
                 <select
                   id="sortSelect"
                   value={sortOption}
