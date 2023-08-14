@@ -1,11 +1,10 @@
 .priority-column {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   min-width: 300px;
   max-width: 400px;
-  flex: 1;
+  background-color: transparent; /* Or use the background color you want */
+  border: none; /* Remove borders if any */
+  box-shadow: none; /* Remove shadows if any */
 }
 
 .column-title {
