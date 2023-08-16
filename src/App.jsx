@@ -31,7 +31,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://apimocha.com/quicksell/data");
+      const response = await fetch("https://api.quicksell.co/v1/internal/frontend-assignment");
       const jsonData = await response.json();
 
       setTasks(jsonData.tickets || []);
